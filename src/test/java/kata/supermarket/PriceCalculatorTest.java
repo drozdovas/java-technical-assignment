@@ -29,4 +29,21 @@ class PriceCalculatorTest {
                 Arguments.of("1.29", 5, "3.87")
         );
     }
+
+    @ParameterizedTest
+    @MethodSource
+    void itemByUnitWithTwoForOnePoundFreeHasExpectedDiscount(String price, int quantity, String expectedPrice) {
+
+        final ItemByUnit item = new ItemByUnit("Snickers Bar", new BigDecimal(price)
+                , quantity, DiscountType.TWO_FOR_ONE_POUND);
+        assertEquals(new BigDecimal(expectedPrice), item.totalPrice());
+    }
+
+    static Stream<Arguments> itemByUnitWithTwoForOnePoundFreeHasExpectedDiscount() {
+        return Stream.of(
+                Arguments.of("1.02", 1, "1.02"),
+                Arguments.of("1.02", 2, "1.00"),
+                Arguments.of("1.02", 5, "3.02")
+        );
+    }
 }

@@ -14,6 +14,10 @@ public class PriceCalculator {
                 return applyBuyOneGetOneFreeDiscount(item.price, item.quantity)
                         .setScale(2, BigDecimal.ROUND_HALF_UP);
 
+            case TWO_FOR_ONE_POUND:
+                return applyTwoForOnePoundDiscount(item.price, item.quantity)
+                        .setScale(2, BigDecimal.ROUND_HALF_UP);
+
             default:
                 return totalPriceWithoutDiscount(item.price, item.quantity)
                         .setScale(2, BigDecimal.ROUND_HALF_UP);
@@ -34,14 +38,19 @@ public class PriceCalculator {
                     .add(price);
     }
 
+    private BigDecimal applyTwoForOnePoundDiscount (BigDecimal price, BigDecimal quantity){
+
+        if(quantity.intValue() % 2 == 0) {
+            return quantity.divide(new BigDecimal(2));
+        }
+        else
+            return getApplicableItemCountWhenDividingByTwo(quantity)
+                    .add(price);
+    }
+
     private BigDecimal getApplicableItemCountWhenDividingByTwo (BigDecimal quantity){
 
         return quantity.divide(new BigDecimal(2), RoundingMode.FLOOR);
-    }
-
-    private BigDecimal applyTwoForOnePoundDiscount (){
-
-        return BigDecimal.ZERO;
     }
 
     private BigDecimal threeForThePriceOfTwo (){
