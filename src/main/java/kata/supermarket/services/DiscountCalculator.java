@@ -41,6 +41,6 @@ public class DiscountCalculator {
 
     private BigDecimal totalPriceWithoutDiscount(BigDecimal price, BigDecimal quantity){
 
-        return price.multiply(quantity).setScale(1, BigDecimal.ROUND_HALF_UP);
+        return price.multiply(quantity).setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 }
