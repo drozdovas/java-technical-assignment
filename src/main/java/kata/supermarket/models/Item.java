@@ -17,7 +17,7 @@ public class Item {
         this.discountType = discountType;
     }
 
-    public BigDecimal getPrice() {
+    public BigDecimal totalPrice() {
 
         return BigDecimal.ZERO;
     }

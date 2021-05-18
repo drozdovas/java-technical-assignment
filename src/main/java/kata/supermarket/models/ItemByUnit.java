@@ -1,13 +1,13 @@
 package kata.supermarket.models;
 
 
-import kata.supermarket.services.DiscountCalculator;
+import kata.supermarket.services.PriceCalculator;
 
 import java.math.BigDecimal;
 
 public class ItemByUnit extends Item {
 
-    private final DiscountCalculator discountCalculator = new DiscountCalculator();
+    private final PriceCalculator priceCalculator = new PriceCalculator();
 
     public ItemByUnit(String name, BigDecimal pricePerUnit, int quantity, DiscountType discountType) {
 
@@ -15,8 +15,8 @@ public class ItemByUnit extends Item {
     }
 
     @Override
-    public BigDecimal getPrice() {
+    public BigDecimal totalPrice() {
 
-        return discountCalculator.get(this);
+        return priceCalculator.get(this);
     }
 }

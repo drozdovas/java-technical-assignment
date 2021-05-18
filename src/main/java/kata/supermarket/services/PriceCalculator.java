@@ -3,8 +3,9 @@ package kata.supermarket.services;
 import kata.supermarket.models.Item;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
-public class DiscountCalculator {
+public class PriceCalculator {
     public BigDecimal get (Item item){
 
         switch (item.discountType){
@@ -22,7 +23,20 @@ public class DiscountCalculator {
 
     private BigDecimal applyBuyOneGetOneFreeDiscount (BigDecimal price, BigDecimal quantity){
 
-        return BigDecimal.ZERO;
+        if(quantity.intValue() % 2 == 0) {
+            return quantity
+                    .divide(new BigDecimal("2"))
+                    .multiply(price);
+        }
+        else
+            return getApplicableItemCountWhenDividingByTwo(quantity)
+                    .multiply(price)
+                    .add(price);
+    }
+
+    private BigDecimal getApplicableItemCountWhenDividingByTwo (BigDecimal quantity){
+
+        return quantity.divide(new BigDecimal(2), RoundingMode.FLOOR);
     }
 
     private BigDecimal applyTwoForOnePoundDiscount (){

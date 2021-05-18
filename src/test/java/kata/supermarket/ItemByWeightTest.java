@@ -19,7 +19,7 @@ class ItemByWeightTest {
 
         final ItemByWeight weighedItem = new ItemByWeight("Bell Peppers", new BigDecimal(pricePerKilo)
                 , new BigDecimal(weightInKilos), DiscountType.NONE);
-        assertEquals(new BigDecimal(expectedPrice), weighedItem.getPrice());
+        assertEquals(new BigDecimal(expectedPrice), weighedItem.totalPrice());
     }
 
     static Stream<Arguments> itemFromWeighedProductHasExpectedUnitPrice() {

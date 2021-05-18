@@ -16,7 +16,7 @@ public class BasketCalculator {
 
     public BigDecimal calculate() {
         return items.parallelStream()
-                .map(Item::getPrice)
+                .map(Item::totalPrice)
                 .reduce(BigDecimal::add)
                 .orElse(BigDecimal.ZERO)
                 .setScale(2, RoundingMode.HALF_UP);

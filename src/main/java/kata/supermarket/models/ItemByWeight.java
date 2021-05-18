@@ -10,7 +10,7 @@ public class ItemByWeight extends Item {
     }
 
     @Override
-    public BigDecimal getPrice() {
+    public BigDecimal totalPrice() {
         return this.price.multiply(this.quantity).setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 }
