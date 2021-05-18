@@ -1,7 +1,6 @@
 package kata.supermarket;
 
-import kata.supermarket.models.Item;
-import kata.supermarket.models.WeighedProduct;
+import kata.supermarket.models.ItemByWeight;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,14 +10,15 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class WeighedProductTest {
+class ItemByWeightTest {
 
     @ParameterizedTest
     @MethodSource
     void itemFromWeighedProductHasExpectedUnitPrice(String pricePerKilo, String weightInKilos, String expectedPrice) {
-        final WeighedProduct weighedProduct = new WeighedProduct(new BigDecimal(pricePerKilo));
-        final Item weighedItem = weighedProduct.weighing(new BigDecimal(weightInKilos));
-        assertEquals(new BigDecimal(expectedPrice), weighedItem.price());
+
+        final ItemByWeight weighedItem = new ItemByWeight("Bell Peppers", new BigDecimal(pricePerKilo)
+                , new BigDecimal(weightInKilos));
+        assertEquals(new BigDecimal(expectedPrice), weighedItem.getPrice());
     }
 
     static Stream<Arguments> itemFromWeighedProductHasExpectedUnitPrice() {

@@ -1,16 +1,18 @@
 package kata.supermarket.models;
 
+
 import java.math.BigDecimal;
 
-public class ItemByUnit implements Item {
+public class ItemByUnit extends Item {
 
-    private final Product product;
+    public ItemByUnit(String name, BigDecimal pricePerUnit, int quantity) {
 
-    ItemByUnit(final Product product) {
-        this.product = product;
+        super(name, pricePerUnit, BigDecimal.valueOf(quantity));
     }
 
-    public BigDecimal price() {
-        return product.pricePerUnit();
+    @Override
+    public BigDecimal getPrice() {
+
+        return price.multiply(quantity).setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 }
