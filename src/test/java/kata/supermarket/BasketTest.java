@@ -1,9 +1,6 @@
 package kata.supermarket;
 
-import kata.supermarket.models.Basket;
-import kata.supermarket.models.Item;
-import kata.supermarket.models.ItemByUnit;
-import kata.supermarket.models.ItemByWeight;
+import kata.supermarket.models.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -66,31 +63,31 @@ class BasketTest {
 
     private static Item aPintOfMilk() {
 
-        return new ItemByUnit("Pint of milk",new BigDecimal("0.49"), 1);
+        return new ItemByUnit("Pint of milk",new BigDecimal("0.49"), 1, DiscountType.NONE);
     }
 
     private static Item aPackOfDigestives() {
 
-        return new ItemByUnit("Pack Of Digestives", new BigDecimal("1.55"),1);
+        return new ItemByUnit("Pack Of Digestives", new BigDecimal("1.55"),1, DiscountType.NONE);
     }
 
     private static Item aKiloOfAmericanSweets() {
 
-        return new ItemByWeight("American Sweets", new BigDecimal("4.99"), new BigDecimal(1));
+        return new ItemByWeight("American Sweets", new BigDecimal("4.99"), new BigDecimal(1), DiscountType.NONE);
     }
 
     private static Item twoFiftyGramsOfAmericanSweets() {
 
-        return new ItemByWeight("American Sweets", new BigDecimal("4.99"), new BigDecimal(".25"));
+        return new ItemByWeight("American Sweets", new BigDecimal("4.99"), new BigDecimal(".25"), DiscountType.NONE);
     }
 
     private static Item aKiloOfPickAndMix() {
 
-        return new Item("Pick And Mix", new BigDecimal("2.99"), new BigDecimal(1));
+        return new Item("Pick And Mix", new BigDecimal("2.99"), new BigDecimal(1), DiscountType.NONE);
     }
 
     private static Item twoHundredGramsOfPickAndMix() {
 
-        return new ItemByWeight("Pick And Mix", new BigDecimal("2.99"), new BigDecimal(".20"));
+        return new ItemByWeight("Pick And Mix", new BigDecimal("2.99"), new BigDecimal(".20"), DiscountType.NONE);
     }
 }

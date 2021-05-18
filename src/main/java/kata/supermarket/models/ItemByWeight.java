@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 
 public class ItemByWeight extends Item {
 
-    public ItemByWeight(String name, BigDecimal pricePerKilo, BigDecimal quantityInKilos) {
+    public ItemByWeight(String name, BigDecimal pricePerKilo, BigDecimal quantityInKilos, DiscountType discountType) {
 
-        super(name, pricePerKilo, quantityInKilos);
+        super(name, pricePerKilo, quantityInKilos, discountType);
     }
 
     @Override
